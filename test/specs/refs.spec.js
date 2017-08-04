@@ -284,21 +284,6 @@ describe('$Refs object', function() {
           );
         });
     });
-
-    it('should throw an error if the JSON Pointer path does not exist', function() {
-      return $RefParser
-        .resolve(path.abs('specs/external/external.yaml'))
-        .then(function($refs) {
-          $refs.get('external.yaml#/foo/bar');
-        })
-        .catch(function(err) {
-          expect(err).to.be.an.instanceOf(Error);
-          expect(err.message).to.equal(
-            'Error resolving $ref pointer "' + encodeURI(path.abs('specs/external/external.yaml')) + '#/foo/bar". ' +
-            '\nToken "foo" does not exist.'
-          );
-        });
-    });
   });
 
   describe('set', function() {
